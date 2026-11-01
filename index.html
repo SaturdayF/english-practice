@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>英汉练习本</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="xlsxReader.js" defer></script>
+    <script src="defaultData.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <main class="page">
+        <header class="topbar">
+            <div class="brand"><span class="brandMark" aria-hidden="true">Aa</span><span>英汉练习本</span></div>
+            <span class="localNote">文件只在本机读取</span>
+        </header>
+
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="sidebarHeading">
+                    <h1>把词句<br>练到会。</h1>
+                    <p>导入你的双语表格，逐条回想、拼写、核对。</p>
+                </div>
+
+                <section class="sourcePanel" aria-labelledby="importTitle">
+                    <h2 id="importTitle">练习内容</h2>
+                    <p>已内置一份词句表。也可导入其他 Excel 文件替换；前两列分别放英文和中文，顺序不限。</p>
+                    <label class="uploadButton">选择 Excel 文件
+                        <input id="fileInput" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                    </label>
+                    <p id="fileStatus" class="fileStatus" role="status">支持 .xlsx；读取第一个工作表。</p>
+                    <div class="sourceActions">
+                        <button id="clearButton" type="button" hidden>清空当前内容</button>
+                        <button id="restoreButton" type="button" hidden>恢复默认内容</button>
+                    </div>
+                </section>
+
+                <section id="options" class="options" hidden aria-label="练习设置">
+                    <label class="fieldLabel" for="columnSelect">中文所在列</label>
+                    <select id="columnSelect">
+                        <option value="0">A 列</option>
+                        <option value="1">B 列</option>
+                    </select>
+                    <fieldset>
+                        <legend class="fieldLabel">练习方式</legend>
+                        <label><input type="radio" name="mode" value="mixed" checked><span>双向混合</span></label>
+                        <label><input type="radio" name="mode" value="write"><span>只练英文拼写</span></label>
+                        <label><input type="radio" name="mode" value="reveal"><span>只看中文释义</span></label>
+                    </fieldset>
+                </section>
+            </aside>
+
+            <section class="mainPanel" aria-label="练习区">
+                <div id="emptyState" class="emptyState">
+                    <div class="emptyGlyph" aria-hidden="true">中 <span>→</span> En</div>
+                    <h2>先导入一份词句表</h2>
+                    <p>练习会在这里开始。看到中文时拼写英文；看到英文时点击显示中文答案。</p>
+                </div>
+
+                <div id="practice" class="practice" hidden>
+                    <div class="progressHeader"><span id="direction"></span><span id="progressText"></span></div>
+                    <div class="progressTrack" aria-hidden="true"><div id="progressBar"></div></div>
+                    <div class="questionArea">
+                        <p class="questionLabel">当前题目</p>
+                        <div id="prompt" class="prompt"></div>
+                    </div>
+                    <form id="writeForm" class="answerForm" autocomplete="off">
+                        <label for="answerInput">写出对应的英文</label>
+                        <div class="answerRow"><input id="answerInput" type="text" spellcheck="false" placeholder="输入英文，也可以留空"><button id="submitButton" type="submit" class="primaryButton">提交答案</button></div>
+                        <p class="hint">留空提交会直接显示答案；填写后会判对错。忽略大小写和多余空格。</p>
+                    </form>
+                    <button id="revealButton" class="primaryButton revealButton" type="button" hidden>显示答案</button>
+                    <div id="feedback" class="feedback" role="status" hidden><span id="resultLabel"></span><strong id="answerText"></strong></div>
+                    <div class="footerRow"><span id="scoreText"></span><div class="questionNavigation"><button id="previousButton" class="nextButton" type="button" disabled>上一题</button><button id="nextButton" class="nextButton" type="button" hidden>下一题</button></div></div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

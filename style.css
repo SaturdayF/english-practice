@@ -1,0 +1,72 @@
+/* Quiet workbook styling keeps the prompt and the answer in focus. */
+:root { color-scheme: light; font-family: "Microsoft YaHei", "PingFang SC", sans-serif; color: #172938; background: #edf2f4; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+[hidden] { display: none !important; }
+.page { max-width: 1320px; min-height: 100vh; margin: auto; padding: 0 42px 42px; }
+.topbar { height: 86px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #d5dfe3; }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 750; font-size: 17px; letter-spacing: .02em; }
+.brandMark { display: grid; place-items: center; width: 34px; height: 34px; border: 2px solid #235b70; border-radius: 9px; color: #235b70; font: 700 15px Georgia, serif; letter-spacing: -.08em; }
+.localNote { color: #607783; font-size: 13px; }
+.layout { display: grid; grid-template-columns: 310px minmax(0,1fr); gap: 44px; padding-top: 48px; }
+.sidebar { padding-top: 13px; }
+.sidebarHeading h1 { margin: 0; font-size: clamp(34px,4vw,50px); line-height: 1.2; letter-spacing: -.06em; }
+.sidebarHeading p { margin: 20px 0 38px; max-width: 240px; color: #5d7480; line-height: 1.75; }
+.sourcePanel, .options { border-top: 1px solid #c8d7dd; padding-top: 24px; }
+.sourcePanel h2 { margin: 0 0 10px; font-size: 17px; }
+.sourcePanel > p { color: #5d7480; font-size: 14px; line-height: 1.65; }
+.uploadButton { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; margin-top: 12px; padding: 0 20px; border-radius: 6px; background: #225b70; color: white; font-weight: 650; cursor: pointer; }
+.uploadButton:hover, .primaryButton:hover { background: #17485b; }
+.uploadButton:focus-within { outline: 3px solid #e7aa66; }
+#fileInput { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.fileStatus { min-height: 3em; overflow-wrap: anywhere; }
+.fileStatus.error { color: #a64030; }
+.sourceActions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 12px; }
+.sourceActions button { padding: 8px 11px; border: 1px solid #aabec6; border-radius: 5px; background: transparent; color: #225b70; font-size: 13px; }
+.sourceActions button:hover { background: #e3edef; }
+.options { margin-top: 20px; }
+.fieldLabel { display: block; margin-bottom: 11px; font-size: 13px; font-weight: 700; color: #3f606f; }
+select { width: 100%; height: 42px; padding: 0 10px; border: 1px solid #aabec6; border-radius: 5px; background: #fff; color: #172938; }
+fieldset { display: grid; gap: 10px; margin: 24px 0 0; padding: 0; border: 0; }
+fieldset label { display: flex; align-items: center; gap: 9px; font-size: 14px; }
+fieldset input { accent-color: #225b70; width: 17px; height: 17px; }
+.mainPanel { min-height: 620px; padding: clamp(30px,5vw,68px); background: #fff; border: 1px solid #d5e0e4; border-radius: 12px; box-shadow: 0 14px 44px #1e43500d; }
+.emptyState { min-height: 475px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.emptyGlyph { color: #235b70; font-family: Georgia, "Microsoft YaHei", serif; font-size: clamp(42px,6vw,70px); white-space: nowrap; }
+.emptyGlyph span { color: #b8cbd1; font: 300 .65em "Microsoft YaHei", sans-serif; vertical-align: .08em; }
+.emptyState h2 { margin: 32px 0 8px; font-size: 25px; }
+.emptyState p { max-width: 385px; color: #667c87; line-height: 1.8; }
+.practice { min-height: 480px; display: flex; flex-direction: column; }
+.progressHeader, .footerRow { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #5d7480; font-size: 14px; }
+.progressHeader span:first-child { color: #225b70; font-weight: 700; }
+.progressTrack { height: 5px; margin-top: 18px; background: #e8eff1; border-radius: 10px; overflow: hidden; }
+.progressTrack div { height: 100%; background: #b77b43; transition: width .2s ease; }
+.questionArea { padding: 62px 0 42px; }
+.questionLabel { margin: 0 0 15px; font-size: 13px; color: #67808a; }
+.prompt { max-width: 760px; font-size: clamp(25px,3.3vw,44px); font-weight: 650; line-height: 1.4; overflow-wrap: anywhere; }
+.prompt.englishPrompt { font-size: clamp(21px,2.6vw,34px); }
+.answerForm label { display: block; margin-bottom: 11px; color: #3d5966; font-size: 14px; font-weight: 650; }
+.answerRow { display: flex; gap: 10px; }
+.answerRow input { flex: 1; min-width: 0; height: 52px; padding: 0 15px; border: 1px solid #aebfc6; border-radius: 6px; outline: none; background: #fbfdfd; }
+.answerRow input:focus { border-color: #225b70; box-shadow: 0 0 0 3px #225b7020; }
+.primaryButton { min-height: 52px; padding: 0 24px; border: 0; border-radius: 6px; background: #225b70; color: white; font-weight: 700; }
+.primaryButton:disabled { opacity: .5; cursor: default; }
+.hint { margin: 11px 0 0; color: #7b8f98; font-size: 12px; }
+.revealButton { align-self: flex-start; }
+.feedback { display: grid; gap: 8px; margin-top: 24px; padding: 18px 20px; border-left: 4px solid #225b70; background: #eef5f7; }
+.feedback.correct { border-color: #3b8b69; background: #eff8f2; }
+.feedback.incorrect { border-color: #b77b43; background: #fff6ec; }
+.feedback span { color: #4b6875; font-size: 13px; }
+.feedback strong { font-size: 22px; font-weight: 650; line-height: 1.5; overflow-wrap: anywhere; }
+.footerRow { margin-top: auto; padding-top: 34px; }
+.nextButton { padding: 11px 17px; border: 1px solid #225b70; border-radius: 6px; background: white; color: #225b70; font-weight: 700; }
+.nextButton:hover { background: #eef5f7; }
+.questionNavigation { display: flex; flex-wrap: wrap; gap: 10px; }
+.nextButton:disabled { opacity: .45; cursor: not-allowed; }
+.footerRow { flex-wrap: wrap; }
+:focus-visible { outline: 3px solid #d99550; outline-offset: 3px; }
+@media (max-width: 800px) { .page { padding: 0 20px 24px; } .layout { grid-template-columns: 1fr; gap: 28px; padding-top: 30px; } .sidebarHeading h1 br { display: none; } .sidebarHeading p { max-width: none; margin-bottom: 24px; } .mainPanel { min-height: 480px; } .emptyState { min-height: 350px; } }
+@media (max-width: 520px) { .topbar { height: 68px; } .localNote { display: none; } .mainPanel { padding: 25px 20px; } .questionArea { padding: 42px 0 32px; } .answerRow { flex-direction: column; } .answerRow input, .primaryButton { width: 100%; } .revealButton { width: auto; } }
+@media (prefers-reduced-motion: reduce) { .progressTrack div { transition: none; } }
